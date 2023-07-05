@@ -1,0 +1,25 @@
+name: BeautiBackpack
+version: ${project.version}
+author: IncludivicS
+main: com.includivics.BeautiBackpackPlugin
+api-version: '1.18'
+
+commands:
+  beautibackpack:
+    description: plugin commands
+    aliases:
+      - bbp
+      - bp
+    usage: /beautibackpack help
+permissions:
+  beautibackpack.*:
+    children:
+      - beautibackpack.give
+      - beautibackpack.reload
+      - beautibackpack.help
+  beautibackpack.give:
+    default: op
+  beautibackpack.reload:
+    default: op
+  beatibackpack.help:
+    default: op
