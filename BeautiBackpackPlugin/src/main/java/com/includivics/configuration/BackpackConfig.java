@@ -25,6 +25,8 @@ public class BackpackConfig {
     private final File file;
     private final List<BackpackItem> bagList = new ArrayList<>();
     private final List<NamespacedKey> recipes = new ArrayList<>();
+
+    public final List<ItemStack> backpacksList = new ArrayList<>();
     private FileConfiguration config;
 
     public BackpackConfig(BeautiBackpackPlugin main) {
@@ -160,6 +162,7 @@ public class BackpackConfig {
         Bukkit.removeRecipe(namespacedKey);
         Bukkit.addRecipe(shapedRecipe);
         recipes.add(namespacedKey);
+        backpacksList.add(resultItemStack);
     }
 
     private void addShapelessRecipe(List<String> recipeStrings, HashMap<String, Material> ingredients, ItemStack resultItemStack) {
@@ -181,6 +184,7 @@ public class BackpackConfig {
         Bukkit.removeRecipe(namespacedKey);
         Bukkit.addRecipe(shapelessRecipe);
         recipes.add(namespacedKey);
+        backpacksList.add(resultItemStack);
     }
 
 

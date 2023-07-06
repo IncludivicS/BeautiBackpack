@@ -5,14 +5,21 @@ import com.includivics.commands.Commands;
 import com.includivics.configuration.BackpackConfig;
 import com.includivics.configuration.MainConfig;
 import com.includivics.events.*;
+import com.includivics.holders.BackpackHolder;
 import com.includivics.nms.version.*;
 import com.includivics.utilities.BackpackUtil;
 import com.includivics.utilities.ColorUtil;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
+
+import static com.includivics.events.BackpackPages.currentPage;
 
 public final class BeautiBackpackPlugin extends JavaPlugin {
 
@@ -35,6 +42,7 @@ public final class BeautiBackpackPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         getServer().getConsoleSender().sendMessage(pluginPrefix + ChatColor.YELLOW + "Plugin Disabled");
+        closeAllBackpacks();
     }
 
     private void nmsIdentify() {
@@ -62,7 +70,7 @@ public final class BeautiBackpackPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BackpackClose(this), plugin);
         getServer().getPluginManager().registerEvents(new BackpackPages(this), plugin);
         getServer().getPluginManager().registerEvents(new PreventUseAsIngredient(this), plugin);
-        getServer().getPluginManager().registerEvents(new SortInventory(), plugin);
+        getServer().getPluginManager().registerEvents(new SortInventory(this), plugin);
     }
 
     private void registerClasses() {
@@ -77,6 +85,18 @@ public final class BeautiBackpackPlugin extends JavaPlugin {
         Objects.requireNonNull(getCommand("beautibackpack")).setExecutor(new Commands(this));
         Objects.requireNonNull(getCommand("beautibackpack")).setTabCompleter(new BackpackTabCompleter(this));
 
+    }
+
+    private void closeAllBackpacks() {
+        for (Player player : Bukkit.getOnlinePlayers()){
+            Inventory topInventory = player.getOpenInventory().getTopInventory();
+            InventoryHolder topInventoryHolder = topInventory.getHolder();
+            ItemStack itemStack = player.getInventory().getItemInMainHand();
+            if (topInventoryHolder instanceof BackpackHolder){
+                backpackUtil.saveBackpack(itemStack, topInventory, currentPage.get(backpackUtil.getUUID(itemStack)), player);
+                player.closeInventory();
+            }
+        }
     }
 
 }
