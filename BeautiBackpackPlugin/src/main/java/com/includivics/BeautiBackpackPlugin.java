@@ -62,6 +62,7 @@ public final class BeautiBackpackPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BackpackClose(this), plugin);
         getServer().getPluginManager().registerEvents(new BackpackPages(this), plugin);
         getServer().getPluginManager().registerEvents(new PreventUseAsIngredient(this), plugin);
+        getServer().getPluginManager().registerEvents(new SortInventory(), plugin);
     }
 
     private void registerClasses() {

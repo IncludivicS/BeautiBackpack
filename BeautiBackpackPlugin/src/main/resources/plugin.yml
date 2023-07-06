@@ -4,6 +4,8 @@ author: IncludivicS
 main: com.includivics.BeautiBackpackPlugin
 api-version: '1.18'
 
+softdepend:
+  - ChestSort
 commands:
   beautibackpack:
     description: plugin commands

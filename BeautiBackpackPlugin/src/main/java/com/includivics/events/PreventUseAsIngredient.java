@@ -12,7 +12,8 @@ public final class PreventUseAsIngredient implements Listener {
 
     private final BackpackUtil backpackUtil;
     private final MainConfig mainConfig;
-    public PreventUseAsIngredient(BeautiBackpackPlugin main){
+
+    public PreventUseAsIngredient(BeautiBackpackPlugin main) {
         this.backpackUtil = main.backpackUtil;
         this.mainConfig = main.mainConfig;
     }

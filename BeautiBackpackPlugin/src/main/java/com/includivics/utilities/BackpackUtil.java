@@ -46,7 +46,7 @@ public final class BackpackUtil {
         return previousPageButton;
     }
 
-    public static ItemStack createBlockedslot() {
+    public static ItemStack createBlockedSlot() {
         ItemStack previousPageButton = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
         ItemMeta itemMeta = previousPageButton.getItemMeta();
         assert itemMeta != null;
@@ -93,7 +93,7 @@ public final class BackpackUtil {
             int addedSlots = lastPageSize - slots;
             Inventory inv = Bukkit.createInventory(new BackpackHolder(), lastPageSize, Objects.requireNonNull(stack.getItemMeta()).getDisplayName());
             for (int i = 0; i < addedSlots; i++) {
-                inv.setItem(lastPageSize - (i + 1), createBlockedslot());
+                inv.setItem(lastPageSize - (i + 1), createBlockedSlot());
             }
             if (addedSlots == 0) {
                 inv.addItem(new ItemStack(Material.AIR));
@@ -109,7 +109,7 @@ public final class BackpackUtil {
                 inv.setItem(54 - 9, createPreviousPageButton());
                 inv.setItem(54 - 1, createNextPageButton());
                 if (i == 0) {
-                    inv.setItem(54 - 9, createBlockedslot());
+                    inv.setItem(54 - 9, createBlockedSlot());
                 }
 
                 int page = i + 1;
@@ -129,7 +129,7 @@ public final class BackpackUtil {
             }
             Inventory inv = Bukkit.createInventory(new BackpackHolder(), lastPageSize, Objects.requireNonNull(stack.getItemMeta()).getDisplayName());
             for (int i = 0; i < lastPageBlockedSlots; i++) {
-                inv.setItem((lastPageSize - 1) - i, createBlockedslot());
+                inv.setItem((lastPageSize - 1) - i, createBlockedSlot());
             }
             inv.setItem(lastPageSize - 9, createPreviousPageButton());
             saveBackpack(player.getInventory().getItemInMainHand(), inv, numPages, player);

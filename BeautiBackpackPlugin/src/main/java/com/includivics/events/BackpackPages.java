@@ -33,7 +33,7 @@ public final class BackpackPages implements Listener {
         if (clickedItem == null || !(topInventory.getHolder() instanceof BackpackHolder)) {
             return;
         }
-        if (clickedItem.isSimilar(createBlockedslot())) {
+        if (clickedItem.isSimilar(createBlockedSlot())) {
             event.setCancelled(true);
         } else if (clickedItem.isSimilar(createNextPageButton())) {
             int curPage = currentPage.getOrDefault(backpackUUID, 1);

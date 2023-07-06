@@ -2,6 +2,8 @@ package com.includivics.events;
 
 import com.includivics.BeautiBackpackPlugin;
 import com.includivics.utilities.BackpackUtil;
+import de.jeff_media.chestsort.api.ChestSortAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,7 +13,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public final class BackpackOpen implements Listener {
-
     private final BackpackUtil backpackUtil;
 
     public BackpackOpen(BeautiBackpackPlugin main) {
@@ -26,6 +27,8 @@ public final class BackpackOpen implements Listener {
         if (!backpackUtil.isBackpack(holdingItemStack)) return;
         if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
             Inventory inventory = backpackUtil.loadBackpack(holdingItemStack, 1, player);
+            if (Bukkit.getServer().getPluginManager().getPlugin("ChestSort") != null)
+                ChestSortAPI.setSortable(inventory);
             player.openInventory(inventory);
             event.setCancelled(true);
         }
