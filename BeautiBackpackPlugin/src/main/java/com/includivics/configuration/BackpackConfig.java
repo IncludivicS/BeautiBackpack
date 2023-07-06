@@ -40,7 +40,8 @@ public class BackpackConfig {
 
         String prefix = "backpacks.small.";
         config.addDefault(prefix + "size", 27);
-        config.addDefault(prefix + "material", Material.IRON_INGOT.toString());
+        config.addDefault(prefix + "material", Material.PLAYER_HEAD.toString());
+        config.addDefault(prefix + "skullTexture", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmUwODdjZDk3NWQyNjRjNzJhZGNhOWVmYzZmYzM0NDc2ZWMzOGUxOGRmNTM2YjMwNzYzNTI2N2EzN2ZhZjA3NiJ9fX0=");
         config.addDefault(prefix + "name", "&eSmall Backpack");
         config.addDefault(prefix + "lore", new String[]{"&athis is backpack"});
         config.addDefault(prefix + "crafting.ingredient.A", Material.LEATHER.toString());
@@ -64,6 +65,7 @@ public class BackpackConfig {
         bag.setSize(config.getInt(configPrefix + "size"));
         bag.setLore((ArrayList<String>) config.getStringList(configPrefix + "lore"));
         bag.setShapeless(config.getBoolean(configPrefix + "crafting.shapeless"));
+        bag.setSkullTexture(config.getString(configPrefix + "skullTexture"));
         return bag;
     }
 
