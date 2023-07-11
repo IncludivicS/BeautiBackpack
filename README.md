@@ -28,4 +28,4 @@ If you would like to contribute code to the project, please fork the repository,
 
 ## License
 
-BeautiBackpack is released under the [MIT License](link-to-license-file). Feel free to modify and distribute the plugin according to the terms of the license.
+BeautiBackpack is released under the [MIT License](issues). Feel free to modify and distribute the plugin according to the terms of the license.
