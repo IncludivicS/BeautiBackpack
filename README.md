@@ -10,7 +10,7 @@ BeautiBackpack is a Spigot plugin that enhances the functionality of backpacks i
 
 ## Installation
 
-1. Download the latest version of BeautiBackpack from the [releases](link-to-releases) page.
+1. Download the latest version of BeautiBackpack from the [releases](https://github.com/IncludivicS/BeautiBackpack/releases) page.
 2. Place the downloaded JAR file into the `plugins` folder of your Spigot server.
 3. Start or restart your Spigot server.
 
@@ -22,10 +22,10 @@ Craft a backpack and right click to open it
 
 ## Contributing
 
-Contributions to BeautiBackpack are welcome! If you encounter any issues or have suggestions for improvements, please open an issue on the [issue tracker](link-to-issue-tracker).
+Contributions to BeautiBackpack are welcome! If you encounter any issues or have suggestions for improvements, please open an issue on the [issue tracker](https://github.com/IncludivicS/BeautiBackpack/issues).
 
 If you would like to contribute code to the project, please fork the repository, make your changes, and submit a pull request.
 
 ## License
 
-BeautiBackpack is released under the [MIT License](issues). Feel free to modify and distribute the plugin according to the terms of the license.
+BeautiBackpack is released under the MIT License. Feel free to modify and distribute the plugin according to the terms of the license.
