@@ -17,6 +17,8 @@
         <module>v_119R2</module>
         <module>v_119R3</module>
         <module>v_120R1</module>
+        <module>v_120R2</module>
+        <module>v_120R3</module>
     </modules>
 
     <properties>

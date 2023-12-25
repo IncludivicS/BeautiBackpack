@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>BeautiBackpackPlugin</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -152,6 +152,18 @@
         <dependency>
             <groupId>com.includivics</groupId>
             <artifactId>v_120R1</artifactId>
+            <version>parent</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.includivics</groupId>
+            <artifactId>v_120R2</artifactId>
+            <version>parent</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.includivics</groupId>
+            <artifactId>v_120R3</artifactId>
             <version>parent</version>
             <scope>compile</scope>
         </dependency>

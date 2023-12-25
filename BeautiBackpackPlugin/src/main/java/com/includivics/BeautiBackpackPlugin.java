@@ -33,10 +33,12 @@ public final class BeautiBackpackPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
-        nmsIdentify();
-        registerCommand();
-        registerClasses();
-        registerEvents();
+        if (nmsIdentify()){
+            registerCommand();
+            registerClasses();
+            registerEvents();
+            getServer().getConsoleSender().sendMessage(pluginPrefix + ChatColor.YELLOW + "Plugin Enabled!");
+        }
     }
 
     @Override
@@ -45,21 +47,23 @@ public final class BeautiBackpackPlugin extends JavaPlugin {
         closeAllBackpacks();
     }
 
-    private void nmsIdentify() {
+    private boolean nmsIdentify() {
         String version = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
         switch (version) {
-            case "v1_18_R1" -> nms = new v_118R1();
-            case "v1_18_R2" -> nms = new v_118R2();
-            case "v1_19_R1" -> nms = new v_119R1();
-            case "v1_19_R2" -> nms = new v_119R2();
-            case "v1_19_R3" -> nms = new v_119R3();
-            case "v1_20_R1" -> nms = new v_120R1();
+            case "v1_18_R1" -> {nms = new v_118R1(); return true;}
+            case "v1_18_R2" -> {nms = new v_118R2(); return true;}
+            case "v1_19_R1" -> {nms = new v_119R1(); return true;}
+            case "v1_19_R2" -> {nms = new v_119R2(); return true;}
+            case "v1_19_R3" -> {nms = new v_119R3(); return true;}
+            case "v1_20_R1" -> {nms = new v_120R1(); return true;}
+            case "v1_20_R2" -> {nms = new v_120R2(); return true;}
+            case "v1_20_R3" -> {nms = new v_120R3(); return true;}
             default -> {
                 getServer().getConsoleSender().sendMessage(pluginPrefix + ChatColor.YELLOW + "Unsupported server version (" + version + ")");
                 getServer().getPluginManager().disablePlugin(this);
+                return false;
             }
         }
-        getServer().getConsoleSender().sendMessage(pluginPrefix + ChatColor.YELLOW + "Plugin Enabled!");
     }
 
     private void registerEvents() {
