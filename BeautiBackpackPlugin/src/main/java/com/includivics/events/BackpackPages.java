@@ -3,6 +3,8 @@ package com.includivics.events;
 import com.includivics.BeautiBackpackPlugin;
 import com.includivics.holders.BackpackHolder;
 import com.includivics.utilities.BackpackUtil;
+import de.jeff_media.chestsort.api.ChestSortAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -30,6 +32,7 @@ public final class BackpackPages implements Listener {
         ItemStack holding = player.getInventory().getItemInMainHand();
         String backpackUUID = backpackUtil.getUUID(holding);
         Inventory topInventory = player.getOpenInventory().getTopInventory();
+        boolean isChestSortEnable = Bukkit.getPluginManager().getPlugin("ChestSort") != null;
         if (clickedItem == null || !(topInventory.getHolder() instanceof BackpackHolder)) {
             return;
         }
@@ -39,13 +42,21 @@ public final class BackpackPages implements Listener {
             int curPage = currentPage.getOrDefault(backpackUUID, 1);
             backpackUtil.saveBackpack(holding, topInventory, curPage, player);
             curPage++;
-            player.openInventory(backpackUtil.loadBackpack(holding, curPage, player));
+            Inventory nextPage = backpackUtil.loadBackpack(holding, curPage, player);
+            player.openInventory(nextPage);
+            if (isChestSortEnable){
+                ChestSortAPI.setSortable(nextPage);
+            }
             event.setCancelled(true);
         } else if (clickedItem.isSimilar(createPreviousPageButton())) {
             int curPage = currentPage.getOrDefault(backpackUUID, 1);
             backpackUtil.saveBackpack(holding, topInventory, curPage, player);
             curPage--;
-            player.openInventory(backpackUtil.loadBackpack(holding, curPage, player));
+            Inventory previousPage = backpackUtil.loadBackpack(holding, curPage, player);
+            player.openInventory(previousPage);
+            if (isChestSortEnable){
+                ChestSortAPI.setSortable(previousPage);
+            }
             event.setCancelled(true);
         }
     }

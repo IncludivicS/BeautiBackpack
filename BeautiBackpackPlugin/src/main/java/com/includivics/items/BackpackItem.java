@@ -51,11 +51,11 @@ public final class BackpackItem {
     }
 
     private ArrayList<String> operatedLore() {
-        ArrayList<String> lorelist = new ArrayList<>();
+        ArrayList<String> loreList = new ArrayList<>();
         for (String lore : getLore()) {
-            lorelist.add(ColorUtil.translateColorCodes(lore));
+            loreList.add(ColorUtil.translateColorCodes(lore));
         }
-        return lorelist;
+        return loreList;
     }
 
     public static ItemStack createSkull(String url) {
